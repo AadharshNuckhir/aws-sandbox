@@ -1,0 +1,51 @@
+on:
+  push:
+    branches: [ "develop" ]
+    paths:
+      - Dev/Lambda/uc08/**
+
+permissions:
+  id-token: write   # This is required for requesting the JWT
+  contents: read    # This is required for actions/checkout
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+          role-to-assume: arn:aws:iam::496051641293:user/aadharshnuckhirtest1
+          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          aws-region: eu-central-1 # Replace with your AWS region, e.g., us-east-1
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+
+    - name: Terraform Init
+      run: terraform init
+      working-directory: "./Dev/Lambda/uc08/"
+
+    # Checks that all Terraform configuration files adhere to a canonical format
+
+    - name: Terraform Format
+      run: terraform fmt
+      working-directory: "./Dev/Lambda/uc08/"
+
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      run: terraform plan
+      working-directory: "./Dev/Lambda/uc08/"
+
+    #  # Generates an execution apply for Terraform
+    - name: Terraform Apply
+      run: terraform apply  -auto-approve
+      working-directory: "./Dev/Lambda/uc08/"
