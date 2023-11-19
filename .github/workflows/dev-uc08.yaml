@@ -21,10 +21,10 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-          aws-access-key-id: AKIAXG7X3LPGUIXXGAMS
-          aws-secret-access-key: 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
+          aws-access-key-id: AKIAXG7X3LPGTQJ7T3UD
+          aws-secret-access-key: 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
           aws-region: eu-central-1
-          role-to-assume: arn:aws:iam::496051641293:role/AadharshInstanceProfile
+          role-to-assume: arn:aws:iam::496051641293:user/test-user
           role-session-name: GitHub_Action_for_Deploying_to_EU-Central-1
 
     - name: Setup Terraform
