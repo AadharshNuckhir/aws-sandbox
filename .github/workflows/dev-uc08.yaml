@@ -22,8 +22,9 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v1
       with:
           role-to-assume: arn:aws:iam::496051641293:role/aws-role-aadharsh
-          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          role-session-name: GitHub_Action_for_Deploying_to_EU-Central-1
           aws-region: eu-central-1 # Replace with your AWS region, e.g., us-east-1
+          audience: sts.amazonaws.com
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
