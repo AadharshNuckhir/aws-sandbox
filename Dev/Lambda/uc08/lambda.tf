@@ -1,4 +1,4 @@
-######Create a lambda function for presigned
+######|Create a lambda function for presigned
 resource "aws_lambda_function" "presigned_url" {
   function_name = "presigned-url"
   role          =  "arn:aws:iam::496051641293:role/AadharshInstanceProfile"
