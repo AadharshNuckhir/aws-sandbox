@@ -21,8 +21,6 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-          aws-access-key-id: AKIAXG7X3LPGZEYU4MKE
-          aws-secret-access-key: 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
           aws-region: eu-central-1
           role-to-assume: arn:aws:iam::496051641293:role/S3-Full-Access
           role-session-name: GitHub_Action_for_Deploying_to_EU-Central-1
